@@ -1,5 +1,5 @@
 {
-  "name": "webpack-template",
+  "name": "Todo-webapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SBNKy/webpack-template.git"
+    "url": "git+https://github.com/SBNKy/todo-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SBNKy/webpack-template/issues"
+    "url": "https://github.com/SBNKy/todo-app/issues"
   },
-  "homepage": "https://github.com/SBNKy/webpack-template#readme",
+  "homepage": "https://github.com/SBNKy/todo-app#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "html-loader": "^5.1.0",
