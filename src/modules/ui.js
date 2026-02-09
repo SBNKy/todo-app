@@ -27,19 +27,25 @@ export const UI = {
         todos.forEach(todo => {
             const todoListItem = document.createElement("li");
             
-            const itemTitle = document.createElement("h2");
+            const itemHeader = document.createElement("div");
+            itemHeader.classList.add("todo-item-header")
+            
+            const itemTitle = document.createElement("span");
+            itemTitle.classList.add("todo-item-title")
             itemTitle.textContent = todo.title;
 
-            const itemDate = document.createElement("p");
+            const itemDate = document.createElement("span");
             itemDate.classList.add("todo-item-date");
             itemDate.textContent = todo.dueDate;
             
+            itemHeader.appendChild(itemTitle);
+            itemHeader.appendChild(itemDate);
+
             const itemDesc = document.createElement("p");
             itemDesc.classList.add("todo-item-description");
             itemDesc.textContent = todo.description;
             
-            todoListItem.appendChild(itemTitle);
-            todoListItem.appendChild(itemDate);
+            todoListItem.appendChild(itemHeader);
             todoListItem.appendChild(itemDesc);
 
             todoList.appendChild(todoListItem);
