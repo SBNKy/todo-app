@@ -5,51 +5,52 @@ function clearProjectsContainer() {
 }
 
 export const UI = {
-    renderProject: (project) => {
-        // clearProjectsContainer();
-        const projectSection = document.createElement("section");
-        projectSection.classList.add("project-section");
+    renderProjects(projects) {
+        projects.forEach((project) => {
+            const projectSection = document.createElement("section");
+            projectSection.classList.add("project-section");
 
-        const sectionHeader = document.createElement("h2");
-        sectionHeader.textContent = project.name;
+            const sectionHeader = document.createElement("h2");
+            sectionHeader.textContent = project.name;
 
-        const todoList = document.createElement("ul");
+            const todoList = document.createElement("ul");
 
-        UI.renderTodos(project.todos, todoList);
+            this.renderTodos(project.todos, todoList);
 
-        projectSection.appendChild(sectionHeader);
-        projectSection.appendChild(todoList);
+            projectSection.appendChild(sectionHeader);
+            projectSection.appendChild(todoList);
 
-        projectsContainer.appendChild(projectSection);
+            projectsContainer.appendChild(projectSection);
+        });
     },
 
-    renderTodos: (todos, todoList) => {
-        todos.forEach(todo => {
+    renderTodos(todos, todoList) {
+        todos.forEach((todo) => {
             const todoListItem = document.createElement("li");
-            
+
             const itemHeader = document.createElement("div");
-            itemHeader.classList.add("todo-item-header")
-            
+            itemHeader.classList.add("todo-item-header");
+
             const itemTitle = document.createElement("span");
-            itemTitle.classList.add("todo-item-title")
+            itemTitle.classList.add("todo-item-title");
             itemTitle.textContent = todo.title;
 
             const itemDate = document.createElement("span");
             itemDate.classList.add("todo-item-date");
             itemDate.textContent = todo.dueDate;
-            
+
             itemHeader.appendChild(itemTitle);
             itemHeader.appendChild(itemDate);
 
             const itemDesc = document.createElement("p");
             itemDesc.classList.add("todo-item-description");
             itemDesc.textContent = todo.description;
-            
+
             todoListItem.appendChild(itemHeader);
             todoListItem.appendChild(itemDesc);
 
             todoList.appendChild(todoListItem);
-        })
+        });
     },
 };
 

@@ -4,7 +4,7 @@ export const createProject = (name) => ({
     todos: []
 });
     
-export const createTodo = (title, dueDate, description = "") => ({
+export const createTodo = (title, dueDate, description) => ({
     id: crypto.randomUUID(),
     title,
     dueDate,
