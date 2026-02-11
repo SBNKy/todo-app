@@ -30,5 +30,28 @@
                 <h1>Projects</h1>
             </div>
         </main>
+
+        <dialog id="project-dialog">
+            <form id="project-form" method="dialog">
+                <div class="modal-content">
+                    <label
+                        ><input
+                            type="text"
+                            id="project-form-name"
+                            placeholder="Type in your project name"
+                    /></label>
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        value="cancel"
+                        class="modal-cancel-btn"
+                    >Cancel</button>
+                    <button type="submit" value="submit" class="modal-submit-btn">
+                        Add project
+                    </button>
+                </div>
+            </form>
+        </dialog>
     </body>
 </html>

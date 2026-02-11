@@ -1,4 +1,5 @@
 const projectsContainer = document.querySelector(".project-container");
+const ProjectDialog = document.querySelector("#project-dialog");
 
 function clearProjectsContainer() {
     projectsContainer.innerHTML = "";
@@ -6,6 +7,7 @@ function clearProjectsContainer() {
 
 export const UI = {
     renderProjects(projects) {
+        // clearProjectsContainer();
         projects.forEach((project) => {
             const projectSection = document.createElement("section");
             projectSection.classList.add("project-section");
@@ -52,6 +54,10 @@ export const UI = {
             todoList.appendChild(todoListItem);
         });
     },
+
+    openProjectDialog() {
+        ProjectDialog.showModal();
+    }
 };
 
 function createDeleteTodoBtn() {
