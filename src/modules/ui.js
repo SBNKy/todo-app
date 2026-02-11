@@ -1,5 +1,6 @@
 const projectsContainer = document.querySelector(".project-container");
-const ProjectDialog = document.querySelector("#project-dialog");
+const projectDialog = document.querySelector("#project-dialog");
+const taskDialog = document.querySelector("#task-dialog");
 
 function clearProjectsContainer() {
     projectsContainer.innerHTML = "";
@@ -16,12 +17,18 @@ export const UI = {
             const sectionHeader = document.createElement("h2");
             sectionHeader.textContent = project.name;
 
-            const todoList = document.createElement("ul");
-
-            this.renderTodos(project.todos, todoList);
-
             projectSection.appendChild(sectionHeader);
-            projectSection.appendChild(todoList);
+
+            if (project.todos.length > 0) {
+                const todoList = document.createElement("ul");
+                
+                this.renderTodos(project.todos, todoList);
+                projectSection.appendChild(todoList);
+            }
+
+            const addTaskBtn = createAddTaskBtn(project.id);
+
+            projectSection.appendChild(addTaskBtn);
 
             projectsContainer.appendChild(projectSection);
         });
@@ -57,9 +64,31 @@ export const UI = {
     },
 
     openProjectDialog() {
-        ProjectDialog.showModal();
-    }
+        projectDialog.showModal();
+    },
 };
+
+function createAddTaskBtn(projectID) {
+    const btn = document.createElement("button");
+    btn.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>';
+
+    btn.classList.add("add-task-btn");
+
+    btn.addEventListener("click", () => {
+        taskDialog.dataset.currentProjectId = projectID;
+
+        taskDialog.showModal();
+    });
+
+    const spanText = document.createElement("span");
+    spanText.classList.add("add-task-text");
+    spanText.textContent = "Add a new Task";
+
+    btn.appendChild(spanText);
+
+    return btn;
+}
 
 // function createDeleteTodoBtn() {
 //     const deleteBtn = document.createElement("button");
