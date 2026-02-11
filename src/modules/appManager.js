@@ -24,5 +24,6 @@ export const AppManager = {
 
         const newTodo = createTodo(title, dueDate, description);
         activeProject.todos.push(newTodo);
+        UI.renderProjects(this.projects);
     },
 };

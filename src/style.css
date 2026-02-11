@@ -37,10 +37,6 @@ aside {
     padding: 4px 8px;
 }
 
-main {
-    grid-area: 1 / 2 / 3 / 3;
-    background-color: #fdfcfc;
-}
 
 .add-project-btn {
     width: 80%;
@@ -66,6 +62,16 @@ main {
     display: flex;
     width: 25px;
     fill: var(--add-project-btn-color);
+}
+
+main {
+    grid-area: 1 / 2 / 3 / 3;
+    background-color: #fdfcfc;
+}
+
+main h1 {
+    max-width: var(--project-container-max-width);
+    margin: 5vh auto 0 auto;
 }
 
 .project-container {

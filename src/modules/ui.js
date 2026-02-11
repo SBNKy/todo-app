@@ -7,7 +7,8 @@ function clearProjectsContainer() {
 
 export const UI = {
     renderProjects(projects) {
-        // clearProjectsContainer();
+        clearProjectsContainer();
+
         projects.forEach((project) => {
             const projectSection = document.createElement("section");
             projectSection.classList.add("project-section");
@@ -60,14 +61,14 @@ export const UI = {
     }
 };
 
-function createDeleteTodoBtn() {
-    const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("delete-btn");
-    deleteBtn.innerHTML = "&times;"; // Prosty X
-    deleteBtn.setAttribute("aria-label", "Usuń"); // Dostępność
+// function createDeleteTodoBtn() {
+//     const deleteBtn = document.createElement("button");
+//     deleteBtn.classList.add("delete-btn");
+//     deleteBtn.innerHTML = "&times;"; // Prosty X
+//     deleteBtn.setAttribute("aria-label", "Usuń"); // Dostępność
 
-    deleteBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Żeby kliknięcie w X nie rozwijało zadania (jeśli masz taką funkcję)
-        onDelete(todo.id);
-    });
-}
+//     deleteBtn.addEventListener("click", (e) => {
+//         e.stopPropagation(); // Żeby kliknięcie w X nie rozwijało zadania (jeśli masz taką funkcję)
+//         onDelete(todo.id);
+//     });
+// }

@@ -30,5 +30,8 @@ projectDialog.addEventListener("close", () => {
 })
 
 projectFormSubmitBtn.addEventListener("click", () => {
-
+    const formData = new FormData(projectForm);
+    
+    const newProjectName = formData.get("name");
+    AppManager.addProject(newProjectName);
 });
