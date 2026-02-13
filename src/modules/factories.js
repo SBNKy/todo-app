@@ -1,7 +1,8 @@
 export const createProject = (name) => ({
     id: crypto.randomUUID(),
     name,
-    todos: []
+    todos: [],
+    createdAt: new Date().now()
 });
     
 export const createTodo = (title, dueDate, description) => ({
@@ -9,6 +10,6 @@ export const createTodo = (title, dueDate, description) => ({
     title,
     dueDate,
     description,
-    createdAt: Date.now()
+    createdAt: new Date().now()
 });
 

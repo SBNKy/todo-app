@@ -27,8 +27,7 @@
         </aside>
         <main>
             <h1>Projects</h1>
-            <div class="project-container">
-            </div>
+            <div class="project-container"></div>
         </main>
 
         <dialog id="project-dialog">
@@ -37,18 +36,20 @@
                     <label
                         ><input
                             type="text"
-                            id="project-form-name"
                             name="name"
                             placeholder="Type in your project name"
                     /></label>
                 </div>
 
                 <div class="project-dialog-footer">
+                    <button value="cancel" class="modal-cancel-btn">
+                        Cancel
+                    </button>
                     <button
-                        value="cancel"
-                        class="modal-cancel-btn"
-                    >Cancel</button>
-                    <button type="submit" value="submit" class="modal-submit-btn">
+                        type="submit"
+                        value="submit"
+                        class="modal-submit-btn"
+                    >
                         Add project
                     </button>
                 </div>
@@ -58,13 +59,22 @@
         <dialog id="task-dialog">
             <form id="task-form" method="dialog">
                 <div class="task-dialog-content">
-
+                    <label><input type="text" class="task-input-title" name="title" placeholder="Title" /></label>
+                    <label><input type="text" class="task-input-description" name="description" placeholder="Description (optional)"></label>
                 </div>
                 <div class="task-dialog-footer">
-                    
+                    <button value="cancel" class="modal-cancel-btn">
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        value="submit"
+                        class="modal-submit-btn"
+                    >
+                        Add task
+                    </button>
                 </div>
             </form>
-
         </dialog>
     </body>
 </html>

@@ -155,8 +155,6 @@ ul {
     fill: var(--add-project-btn-color);
 }
 
-.add-task-text {
-}
 
 dialog {
     margin: revert;
@@ -193,15 +191,16 @@ dialog {
     outline: none;
 }
 
-.project-dialog-footer {
+.project-dialog-footer,
+.task-dialog-footer {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
     margin-top: auto;
     gap: 8px;
 }
 
-.project-dialog-footer button {
+.project-dialog-footer button,
+.task-dialog-footer button {
     border: none;
     border-radius: 4px;
     padding: 6px 12px;
@@ -224,4 +223,29 @@ dialog {
 #task-dialog {
     height: 200px;
     width: 600px;
+    padding: 16px 18px;
+}
+
+.task-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-dialog-content input {
+    border: none;
+}
+
+.task-dialog-content input:focus {
+    outline: none;
+}
+
+.task-input-title {
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.task-input-description {
+    width: 100%;
+    opacity: 0.7;
 }
