@@ -2,7 +2,7 @@ export const createProject = (name) => ({
     id: crypto.randomUUID(),
     name,
     todos: [],
-    createdAt: new Date().now
+    createdAt: new Date().toISOString()
 });
     
 export const createTodo = (title, dueDate, description) => ({
@@ -10,6 +10,6 @@ export const createTodo = (title, dueDate, description) => ({
     title,
     dueDate,
     description,
-    createdAt: new Date().now
+    createdAt: new Date().toISOString()
 });
 

@@ -1,31 +1,18 @@
 import "./style.css";
 import { UI } from "./modules/ui.js";
-import { createTodo } from "./modules/factories.js";
 import { AppManager } from "./modules/appManager.js";
 import { startOfToday, parseISO, isBefore } from "date-fns";
 
 const addProjectBtn = document.querySelector(".add-project-btn");
 const projectDialog = document.querySelector("#project-dialog");
 const projectForm = document.querySelector("#project-form");
-const projectFormSubmitBtn = document.querySelector(".project-submit-btn");
 const projectCancelBtn = document.querySelector("#project-cancel-btn");
+
 const taskDialog = document.querySelector("#task-dialog");
 const taskForm = document.querySelector("#task-form");
-const taskFormSubmitBtn = document.querySelector(".task-submit-btn");
 const taskCancelBtn = document.querySelector("#task-cancel-btn");
 
-const task1 = createTodo(
-    "update header",
-    "2026-09-02",
-    "A really long description that in reality isn't that long!",
-);
-const task2 = createTodo("add styling", "2026-09-02");
-
-const project1 = AppManager.addProject("make an application");
-
-const project2 = AppManager.addProject("make a header");
-AppManager.addTodo(project1.id, task2.title, task2.dueDate, task1.description);
-AppManager.addTodo(project2.id, task1.title, task1.dueDate);
+AppManager.init();
 
 addProjectBtn.addEventListener("click", () => {
     UI.openProjectDialog();
@@ -44,7 +31,7 @@ projectForm.addEventListener("submit", () => {
 
 projectCancelBtn.addEventListener("click", (e) => {
     UI.closeProjectDialog();
-})
+});
 
 taskDialog.addEventListener("close", () => {
     taskForm.reset();
@@ -78,4 +65,4 @@ taskForm.addEventListener("submit", (e) => {
 
 taskCancelBtn.addEventListener("click", () => {
     UI.closeTaskDialog();
-})
+});
