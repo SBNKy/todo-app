@@ -1,6 +1,7 @@
 const projectsContainer = document.querySelector(".project-container");
 const projectDialog = document.querySelector("#project-dialog");
 const taskDialog = document.querySelector("#task-dialog");
+const taskForm = document.querySelector("#task-form");
 
 function clearProjectsContainer() {
     projectsContainer.innerHTML = "";
@@ -21,7 +22,7 @@ export const UI = {
 
             if (project.todos.length > 0) {
                 const todoList = document.createElement("ul");
-                
+
                 this.renderTodos(project.todos, todoList);
                 projectSection.appendChild(todoList);
             }
@@ -51,13 +52,15 @@ export const UI = {
 
             itemHeader.appendChild(itemTitle);
             itemHeader.appendChild(itemDate);
-
-            const itemDesc = document.createElement("p");
-            itemDesc.classList.add("todo-item-description");
-            itemDesc.textContent = todo.description;
-
+            
             todoListItem.appendChild(itemHeader);
-            todoListItem.appendChild(itemDesc);
+
+            if (todo.description) {
+                const itemDesc = document.createElement("p");
+                itemDesc.classList.add("todo-item-description");
+                itemDesc.textContent = todo.description;
+                todoListItem.appendChild(itemDesc);
+            }
 
             todoList.appendChild(todoListItem);
         });
@@ -66,6 +69,18 @@ export const UI = {
     openProjectDialog() {
         projectDialog.showModal();
     },
+
+    closeProjectDialog() {
+        projectDialog.close();
+    },
+
+    openTaskDialog() {
+        taskDialog.showModal();
+    },
+
+    closeTaskDialog() {
+        taskDialog.close();
+    }
 };
 
 function createAddTaskBtn(projectID) {
@@ -76,7 +91,7 @@ function createAddTaskBtn(projectID) {
     btn.classList.add("add-task-btn");
 
     btn.addEventListener("click", () => {
-        taskDialog.dataset.currentProjectId = projectID;
+        document.querySelector("#form-project-id").value = projectID;
 
         taskDialog.showModal();
     });

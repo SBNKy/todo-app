@@ -19,9 +19,11 @@ export const AppManager = {
         const activeProject = this.projects.find(
             (project) => project.id === projectID,
         );
-        
-        if (!activeProject) console.log("No active project with this given ID");
 
+        if (!activeProject) {
+            console.log("No active project with this given ID");
+            return;
+        }
         const newTodo = createTodo(title, dueDate, description);
         activeProject.todos.push(newTodo);
         UI.renderProjects(this.projects);

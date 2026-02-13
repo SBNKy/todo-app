@@ -31,24 +31,31 @@
         </main>
 
         <dialog id="project-dialog">
-            <form id="project-form" method="dialog">
+            <form id="project-form" method="dialog" autocomplete="off">
                 <div class="project-dialog-content">
                     <label
                         ><input
                             type="text"
                             name="name"
+                            id="project-form-name"
                             placeholder="Type in your project name"
+                            required
                     /></label>
                 </div>
 
                 <div class="project-dialog-footer">
-                    <button value="cancel" class="modal-cancel-btn">
+                    <button
+                        type="button"
+                        value="cancel"
+                        id="project-cancel-btn"
+                        class="modal-cancel-btn"
+                    >
                         Cancel
                     </button>
                     <button
                         type="submit"
                         value="submit"
-                        class="modal-submit-btn"
+                        class="form-submit-btn project-submit-btn"
                     >
                         Add project
                     </button>
@@ -57,19 +64,42 @@
         </dialog>
 
         <dialog id="task-dialog">
-            <form id="task-form" method="dialog">
+            <form id="task-form" autocomplete="off">
                 <div class="task-dialog-content">
-                    <label><input type="text" class="task-input-title" name="title" placeholder="Title" /></label>
-                    <label><input type="text" class="task-input-description" name="description" placeholder="Description (optional)"></label>
+                    <input
+                        type="hidden"
+                        name="project-id"
+                        id="form-project-id"
+                    />
+                    <label
+                        ><input
+                            type="text"
+                            class="task-input-title"
+                            name="title"
+                            placeholder="Title"
+                            required
+                    /></label>
+                    <textarea
+                        class="task-input-description"
+                        name="description"
+                        placeholder="Description (optional)"
+                        maxlength="250"
+                    ></textarea>
+                    <label><input type="date" name="date" required /></label>
                 </div>
                 <div class="task-dialog-footer">
-                    <button value="cancel" class="modal-cancel-btn">
+                    <button
+                        type="button"
+                        value="cancel"
+                        id="task-cancel-btn"
+                        class="modal-cancel-btn"
+                    >
                         Cancel
                     </button>
                     <button
                         type="submit"
                         value="submit"
-                        class="modal-submit-btn"
+                        class="form-submit-btn task-submit-btn"
                     >
                         Add task
                     </button>
