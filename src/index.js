@@ -12,6 +12,8 @@ const taskDialog = document.querySelector("#task-dialog");
 const taskForm = document.querySelector("#task-form");
 const taskCancelBtn = document.querySelector("#task-cancel-btn");
 
+const projectsContainer = document.querySelector(".project-container");
+
 AppManager.init();
 
 addProjectBtn.addEventListener("click", () => {
@@ -65,4 +67,15 @@ taskForm.addEventListener("submit", (e) => {
 
 taskCancelBtn.addEventListener("click", () => {
     UI.closeTaskDialog();
+});
+
+
+projectsContainer.addEventListener("click", (e) => {
+    const deleteBtn = e.target.closest(".delete-todo-btn");
+
+    if (!deleteBtn) return;
+
+    const { projectId, todoId } = deleteBtn.dataset;
+
+    AppManager.deleteTodo(projectId, todoId);
 });

@@ -44,8 +44,22 @@ export const AppManager = {
         this.saveAndRender();
     },
 
+    deleteTodo(projectID, todoId) {
+        const currentProject = this.projects.find(
+            (project) => project.id === projectID,
+        );
+
+        if (!currentProject) return;
+
+        this.projects.forEach(project => {
+            project.todos = project.todos.filter(todo => todo.id !== todoId);
+        })
+
+        this.saveAndRender();
+    },
+
     saveAndRender() {
         Storage.saveProjects(this.projects);
         UI.renderProjects(this.projects);
-    }
+    },
 };

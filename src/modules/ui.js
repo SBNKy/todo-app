@@ -1,7 +1,6 @@
 const projectsContainer = document.querySelector(".project-container");
 const projectDialog = document.querySelector("#project-dialog");
 const taskDialog = document.querySelector("#task-dialog");
-const taskForm = document.querySelector("#task-form");
 
 function clearProjectsContainer() {
     projectsContainer.innerHTML = "";
@@ -21,10 +20,10 @@ export const UI = {
             projectSection.appendChild(sectionHeader);
 
             if (project.todos.length > 0) {
-                const todoList = document.createElement("ul");
+                const todoContainer = document.createElement("ul");
 
-                this.renderTodos(project.todos, todoList);
-                projectSection.appendChild(todoList);
+                this.renderTodos(project.id, project.todos, todoContainer);
+                projectSection.appendChild(todoContainer);
             }
 
             const addTaskBtn = createAddTaskBtn(project.id);
@@ -35,7 +34,7 @@ export const UI = {
         });
     },
 
-    renderTodos(todos, todoList) {
+    renderTodos(projectID, todos, todoContainer) {
         todos.forEach((todo) => {
             const todoListItem = document.createElement("li");
 
@@ -62,7 +61,11 @@ export const UI = {
                 todoListItem.appendChild(itemDesc);
             }
 
-            todoList.appendChild(todoListItem);
+            const deleteTodoBtn = createDeleteTodoBtn(projectID, todo.id);
+
+            todoListItem.appendChild(deleteTodoBtn);
+
+            todoContainer.appendChild(todoListItem);
         });
     },
 
@@ -82,6 +85,16 @@ export const UI = {
         taskDialog.close();
     }
 };
+
+function createDeleteTodoBtn(projectID, todoId) {
+    const deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.classList.add("delete-todo-btn");
+    deleteTaskBtn.dataset.projectId = projectID;
+    deleteTaskBtn.dataset.todoId = todoId;
+    deleteTaskBtn.textContent = "Delete";
+
+    return deleteTaskBtn;
+}
 
 function createAddTaskBtn(projectID) {
     const btn = document.createElement("button");
@@ -104,15 +117,3 @@ function createAddTaskBtn(projectID) {
 
     return btn;
 }
-
-// function createDeleteTodoBtn() {
-//     const deleteBtn = document.createElement("button");
-//     deleteBtn.classList.add("delete-btn");
-//     deleteBtn.innerHTML = "&times;"; // Prosty X
-//     deleteBtn.setAttribute("aria-label", "Usuń"); // Dostępność
-
-//     deleteBtn.addEventListener("click", (e) => {
-//         e.stopPropagation(); // Żeby kliknięcie w X nie rozwijało zadania (jeśli masz taką funkcję)
-//         onDelete(todo.id);
-//     });
-// }
